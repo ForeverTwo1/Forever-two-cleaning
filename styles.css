@@ -1,0 +1,337 @@
+/* ----------- General ----------- */
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #e0f7fa;
+  color: #004d40;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* ----------- Fondo animado ----------- */
+.background-animation {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #b2ebf2, #e0f7fa);
+  z-index: 0;
+  animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ----------- Burbujas ----------- */
+.bubbles {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bubbles span {
+  position: absolute;
+  display: block;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(173, 216, 230, 0.5));
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.6;
+  animation: bubbleFloat 15s linear infinite;
+  bottom: -150px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Tamaños y velocidades diferentes */
+.bubbles span:nth-child(1) { left: 10%; width: 25px; height: 25px; animation-duration: 12s; }
+.bubbles span:nth-child(2) { left: 25%; width: 40px; height: 40px; animation-duration: 18s; }
+.bubbles span:nth-child(3) { left: 35%; width: 30px; height: 30px; animation-duration: 14s; }
+.bubbles span:nth-child(4) { left: 50%; width: 45px; height: 45px; animation-duration: 20s; }
+.bubbles span:nth-child(5) { left: 65%; width: 28px; height: 28px; animation-duration: 16s; }
+.bubbles span:nth-child(6) { left: 75%; width: 38px; height: 38px; animation-duration: 22s; }
+.bubbles span:nth-child(7) { left: 85%; width: 32px; height: 32px; animation-duration: 17s; }
+.bubbles span:nth-child(8) { left: 90%; width: 50px; height: 50px; animation-duration: 19s; }
+.bubbles span:nth-child(9) { left: 5%; width: 20px; height: 20px; animation-duration: 21s; }
+.bubbles span:nth-child(10) { left: 15%; width: 35px; height: 35px; animation-duration: 23s; }
+
+@keyframes bubbleFloat {
+  0% { transform: translateY(0) scale(1); opacity: 0.4; }
+  50% { opacity: 0.9; }
+  100% { transform: translateY(-1000px) scale(1.3); opacity: 0; }
+}
+
+/* ----------- Header ----------- */
+header {
+  text-align: center;
+  background: linear-gradient(to right, #b2ebf2, #e0f7fa);
+  padding: 2em 1em;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-container img {
+  max-width: 120px;
+  width: 35vw;
+  min-width: 80px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 1em;
+  animation: bounceIn 1s ease;
+  box-shadow: 0 2px 16px #a9d6e4cc;
+  background: #fff;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: #01579b;
+}
+
+.slogan {
+  font-style: italic;
+  font-size: 1.2em;
+  color: #00796b;
+}
+
+.mini-slogan {
+  color: #00796b;
+  font-weight: bold;
+}
+
+.shine {
+  background: linear-gradient(to right, #03a9f4, #83f7ff, #03a9f4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ----------- Navegación ----------- */
+nav {
+  background-color: #80deea;
+  padding: 1em;
+  z-index: 1;
+  position: relative;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #004d40;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 1.05em;
+}
+
+nav a:hover {
+  color: #77e8ff;
+  text-shadow: 0 0 5px #03a9f4;
+}
+
+/* ----------- Secciones ----------- */
+main {
+  padding: 2em 1em;
+}
+
+.section {
+  max-width: 800px;
+  margin: 2em auto;
+  background: #ffffffdd;
+  border-radius: 15px;
+  padding: 2em;
+  box-shadow: 0 4px 12px rgba(0, 150, 136, 0.2);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 150, 136, 0.3);
+}
+
+.service-list li {
+  margin: 0.5em 0;
+  font-size: 1.1em;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----------- Promos ----------- */
+.highlight {
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.cta {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #00796b;
+  margin-top: 1em;
+}
+
+.tagline {
+  margin-top: 1em;
+  font-style: italic;
+  color: #00838f;
+}
+
+/* ----------- Formulario ----------- */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  padding: 0.8em;
+  border: 2px solid #b2ebf2;
+  border-radius: 10px;
+  font-size: 1em;
+  background: #f5feff;
+  transition: 0.3s;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+  outline: none;
+  border-color: #00bcd4;
+  background: #e0f7fa;
+  box-shadow: 0 0 6px rgba(0, 188, 212, 0.5);
+}
+
+.booking-form label {
+  font-weight: bold;
+  color: #004d40;
+}
+
+.form-button {
+  background: #00acc1;
+  color: white;
+  padding: 0.8em;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-button:hover {
+  background: #00838f;
+  box-shadow: 0 4px 12px rgba(0, 131, 143, 0.4);
+}
+
+.form-status {
+  font-size: 1em;
+  color: green;
+  text-align: center;
+  margin-top: 1em;
+}
+
+/* ----------- Footer ----------- */
+footer {
+  background: #b2ebf2;
+  text-align: center;
+  padding: 1em;
+  font-size: 0.9em;
+  z-index: 1;
+  position: relative;
+}
+
+/* ----------- Responsivo ----------- */
+@media (max-width: 900px) {
+  .section {
+    padding: 1.5em;
+    max-width: 96vw;
+  }
+  h1 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 1.1em 0.5em 1.2em 0.5em;
+  }
+  .logo-container img {
+    max-width: 75vw;
+    min-width: 55px;
+  }
+  h1 {
+    font-size: 1.4em;
+  }
+  .slogan, .mini-slogan {
+    font-size: 1em;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .section {
+    padding: 1em 0.5em;
+    margin: 1em 0.2em;
+  }
+  main {
+    padding: 1em 0.3em;
+  }
+  .service-list li {
+    font-size: 1em;
+  }
+  .cta {
+    font-size: 1em;
+  }
+}
